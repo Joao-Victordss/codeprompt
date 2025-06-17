@@ -20,7 +20,6 @@ Este é o protótipo do aplicativo CodePrompt, uma plataforma para aprendizado d
     ```bash
     git clone https://github.com/Joao-Victordss/codeprompt.git
     ```
-    (Substitua `seu-usuario` pelo seu nome de usuário do GitHub)
 3.  Navegue até a pasta do projeto:
     ```bash
     cd codeprompt-app
