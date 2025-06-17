@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { motion } from 'framer-motion'
 import { Bug, Code, AlertCircle, Zap, TrendingUp, Filter, BarChart2, CheckCircle } from 'lucide-react'
+import { useRouter } from 'next/navigation'; // Importe useRouter
 
 // Dados mockados de múltiplos desafios
 const mockChallenges = [
@@ -69,7 +70,7 @@ const mockChallenges = [
 ];
 
 // Componente Card Simples (reutilizado do DemoContent)
-const SimpleCard = ({ children, style = {} }) => (
+export const SimpleCard = ({ children, style = {} }) => (
   <div style={{
     backgroundColor: '#fff',
     border: '1px solid #e5e7eb', // border-border
@@ -83,7 +84,7 @@ const SimpleCard = ({ children, style = {} }) => (
 );
 
 // Componente de Botão Simples (reutilizado do DemoContent)
-const SimpleButton = ({ children, onClick, variant = "default", style = {} }) => {
+export const SimpleButton = ({ children, onClick, variant = "default", style = {} }) => {
   let buttonStyles = {
     padding: '10px 18px',
     borderRadius: '8px',
@@ -110,7 +111,7 @@ const SimpleButton = ({ children, onClick, variant = "default", style = {} }) =>
 };
 
 // Componente de Select Simples (reutilizado do DemoContent)
-const SimpleSelect = ({ value, onValueChange, children, style = {} }) => (
+export const SimpleSelect = ({ value, onValueChange, children, style = {} }) => (
   <select
     value={value}
     onChange={(e) => onValueChange(e.target.value)}
@@ -135,6 +136,7 @@ export function ChallengeListing() {
   const [filterDifficulty, setFilterDifficulty] = useState('all');
   const [filterLanguage, setFilterLanguage] = useState('all');
   const [filterStatus, setFilterStatus] = useState('all');
+  const router = useRouter(); // Inicializa o useRouter
 
   const filteredChallenges = mockChallenges.filter(challenge => {
     const matchesDifficulty = filterDifficulty === 'all' || challenge.difficulty === filterDifficulty;
@@ -142,6 +144,10 @@ export function ChallengeListing() {
     const matchesStatus = filterStatus === 'all' || challenge.status === filterStatus;
     return matchesDifficulty && matchesLanguage && matchesStatus;
   });
+
+  const handleStartChallenge = () => {
+    router.push('/desafios/desafioteste'); // Redireciona para a página de teste
+  };
 
   return (
     <div style={{ padding: '24px', display: 'flex', flexDirection: 'column', gap: '24px' }}>
@@ -240,7 +246,7 @@ export function ChallengeListing() {
                 </div>
 
                 <SimpleButton style={{ width: '100%', backgroundColor: '#2563eb' }}
-                  onClick={() => alert(`Iniciar desafio: ${challenge.title}`)}
+                  onClick={handleStartChallenge} // Chama a nova função de navegação
                 >
                   Iniciar Desafio
                 </SimpleButton>
@@ -261,4 +267,4 @@ export function ChallengeListing() {
       </div>
     </div>
   )
-}
+} 
