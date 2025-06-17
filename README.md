@@ -18,7 +18,7 @@ Este é o protótipo do aplicativo CodePrompt, uma plataforma para aprendizado d
 1.  Certifique-se de ter o Node.js e o npm (ou Yarn) instalados.
 2.  Clone este repositório:
     ```bash
-    git clone [https://github.com/seu-usuario/codeprompt-app.git](https://github.com/seu-usuario/codeprompt-app.git)
+    git clone https://github.com/Joao-Victordss/codeprompt.git
     ```
     (Substitua `seu-usuario` pelo seu nome de usuário do GitHub)
 3.  Navegue até a pasta do projeto:
